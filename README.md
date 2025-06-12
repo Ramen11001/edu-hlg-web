@@ -1,6 +1,6 @@
 # product-manage-web
 
-Application developed with Angular 16 for product management with a user commenting system. Uses Bootstrap 5 for styling and UI components.
+Application developed with Angular 16 for courses management with a user commenting system. Uses Bootstrap 5 for styling and UI components.
 
 ## Core Technologies
 
@@ -18,7 +18,7 @@ Login and registration screen where users can create an account or access the sy
 
 Personal area where each user can:
 
-- View their published products
+- View their published courses
 - Check their posted comments
 - Edit personal information (name, email and password)
 
@@ -26,10 +26,9 @@ Personal area where each user can:
 
 Displays all available products in card format showing:
 
-- Product name
-- Price
-- Average rating
-- Main image
+- Course name
+- Cost
+- teacher
 
 Includes:
 
