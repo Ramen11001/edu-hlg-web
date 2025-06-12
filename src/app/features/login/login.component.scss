@@ -1,0 +1,108 @@
+ body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      width: 90%; /* Menos ancho negro en los lados */
+      height: 90%; /* Más espacio en la pantalla */
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(128, 0, 255, 0.5);
+    }
+
+    /* Sección izquierda con división diagonal */
+    .welcome-section {
+      flex: 1;
+      background: linear-gradient(135deg, #6a0dad, #4e00c2);
+      clip-path: polygon(0 0, 200% 0, 30% 100%, 0 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start; /* Tirar a la izquierda */
+      padding: 60px; /* Ajuste del espaciado */
+      color: white;
+    }
+
+    .welcome-section h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .welcome-section p {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    /* Sección derecha */
+    .signup-section {
+      flex: 1;
+      background-color: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+    }
+
+    .signup-section h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+   
+    
+    .form-control {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #6a0dad;
+      border-radius: 0;
+      color: white;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #4e00c2;
+    }
+.form-control::placeholder {
+  color: gray; /* Cambia el color del placeholder */
+  opacity: 1; /* Asegúrate de que sea completamente visible */
+}
+    .btn-signup {
+      background: linear-gradient(90deg, #6a0dad, #4e00c2);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .btn-signup:hover {
+      background: linear-gradient(90deg, #4e00c2, #6a0dad);
+    }
+
+    .login-link {
+      color: #6a0dad;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-link:hover {
+      text-decoration: underline;
+      }

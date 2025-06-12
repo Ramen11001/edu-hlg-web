@@ -1,0 +1,157 @@
+<div class="body">
+  <div class="container-md px-4">
+     <!-- Banner -->
+    <section class="text-white position-relative border banner">
+      <div class="row row-cols-1 row-cols-md-4 g-4 align-items-center mx-0">
+        <div class="col-md-6">
+          <div class="p-5">
+            <h2 class="fw-bold">Bienvenido a nuestros Cursos</h2>
+          </div>
+        </div>
+        <div class="col-md-6 position-relative">
+          <div class="d-flex justify-content-around align-items-center"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="d-flex justify-content-center gap-3 my-3">
+      <form
+        [formGroup]="filterForm"
+        class="d-flex justify-content-center gap-3 my-3 flex-wrap"
+      >
+        <input
+          type="text"
+          formControlName="search"
+          class="form-control w-25"
+          placeholder="Buscar por nombre, profesor o empresa"
+        />
+        <select formControlName="mode" class="form-control w-25">
+          <option value="">Todos los modos</option>
+          <option value="in-person">Presencial</option>
+          <option value="virtual">Virtual</option>
+          <option value="hybrid">Híbrido</option>
+        </select>
+        <select formControlName="area" class="form-control w-25">
+          <option value="">Todas las áreas</option>
+          <option value="technique">Técnica</option>
+          <option value="humanities">Humanidades</option>
+          <option value="health">Salud</option>
+        </select>
+        <select formControlName="level" class="form-control w-25">
+          <option value="">Todos los niveles</option>
+          <option value="beginner">Principiante</option>
+          <option value="intermediate">Intermedio</option>
+          <option value="advanced">Avanzado</option>
+        </select>
+        <input
+          type="number"
+          formControlName="minCost"
+          class="form-control w-25"
+          placeholder="Costo mínimo"
+        />
+        <input
+          type="number"
+          formControlName="maxCost"
+          class="form-control w-25"
+          placeholder="Costo máximo"
+        />
+      </form>
+    </div>
+
+    <!-- Course Cards -->
+    <div *ngIf="!isLoading" class="card-deck h-100">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4" *ngFor="let course of courses">
+          <div class="card border card_border m-2">
+            <div class="card-body text-black">
+              <h5 class="card-title">{{ course.title }}</h5>
+              <p class="card-text text-muted">
+                <i class="bi bi-person"></i> {{ course.teacher }}
+              </p>
+              <p class="text-muted">
+                <i class="bi bi-building"></i> {{ course.company }}
+              </p>
+              <p class="text-muted">
+                <i class="bi bi-geo-alt"></i> {{ course.address }}
+              </p>
+              <p class="price"><strong>Costo:</strong> ${{ course.cost }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-primary">{{ course.mode }}</span>
+                <span class="badge bg-secondary">{{ course.level }}</span>
+                <span class="badge bg-info">{{ course.area }}</span>
+              </div>
+              <a class="btn text-white fw-bold btn_settings mt-2"> Ver detalles </a>
+            </div>
+
+            <div class="card-footer">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="star-rating">
+                  <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                    <i
+                      class="bi"
+                      [ngClass]="{
+                        'bi-star-fill': (course.averageRating ?? 0) > i,
+                        'bi-star': (course.averageRating ?? 0) <= i
+                      }"
+                    ></i>
+                  </ng-container>
+                </div>
+                <span *ngIf="course.certificate" class="badge bg-success">
+                  <i class="bi bi-award"></i> Certificado
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading Template -->
+      <ng-template #loadingTemplate>
+        <p>Cargando cursos...</p>
+      </ng-template>
+
+      <!-- No Courses Found Template -->
+      <ng-template #noCourses>
+        <p>No se encontraron cursos con los filtros aplicados.</p>
+      </ng-template>
+
+      <!-- Controles de paginado -->
+      <div class="d-flex justify-content-center align-items-center my-3">
+        <button
+          class="btn btn-secondary m-1"
+          [disabled]="currentPage === 1"
+          (click)="changePage(currentPage - 1)"
+        >
+          Anterior
+        </button>
+        <span class="mx-2">Página {{ currentPage }} de {{ totalPages }}</span>
+        <button
+          class="btn btn-secondary m-1"
+          [disabled]="currentPage === totalPages"
+          (click)="changePage(currentPage + 1)"
+        >
+          Siguiente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   
+
+   
+
+
