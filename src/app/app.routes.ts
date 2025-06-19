@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './features/login/login.component';
 import { authGuard } from './core/guards/auth.guard';
-import { CourseComponent } from './features/courses/course.component';
+import { LoginComponent } from './features/login/login.component';
+import { CourseComponent } from './features/course/course.component';
+
 
 /**
  * Defines the application routes and their associated components.
@@ -28,12 +29,12 @@ export const routes: Routes = [
    */
   { path: 'login', component: LoginComponent },
   /**
-   * Route for the product.
-   * Displays the `ProductComponent` after successful authentication.
+   * Route for the course.
+   * Displays the `CourseComponent` after successful authentication.
    * Protected by `AuthGuard`, ensuring only authenticated users can access.
    *
    * @route /course
-   * @component ProductComponent
+   * @component CourseComponent
    * @canActivate AuthGuard
    */
   {

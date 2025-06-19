@@ -41,14 +41,6 @@ export class LoginComponent {
    * @type {FormGroup}
    */
   loginForm = new FormGroup({
-    firstName: new FormControl(null, [
-      Validators.required, // Username is required
-      Validators.minLength(3), // Minimum length of 3 characters
-    ]),
-    lastName: new FormControl(null, [
-      Validators.required, // Username is required
-      Validators.minLength(3), // Minimum length of 3 characters
-    ]),
     email: new FormControl(null, [
       Validators.required, // Username is required
       Validators.minLength(3), // Minimum length of 3 characters
@@ -94,8 +86,6 @@ export class LoginComponent {
 
     // Prepare login data object
     const loginData = {
-      firstName: this.loginForm.value.firstName,
-      lastName: this.loginForm.value.lastName,
       email: this.loginForm.value.email,
       password: encryptedPassword,
     };
@@ -104,14 +94,14 @@ export class LoginComponent {
       /**
        * Executes when login is successful.
        * - Stores the token in local storage.
-       * - Redirects the user to the product.
+       * - Redirects the user to the course.
        *
        * @callback
        * @param {object} response - The server's response containing the token.
        */
       next: (response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/course']);
+        this.router.navigate(['/courses']);
         this.loading = false;
       },
       /**
